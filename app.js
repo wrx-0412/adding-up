@@ -40,11 +40,13 @@ rl.on('close',() => {
         value.change = value.popu15 / value.popu10;
     }
     const rankingArray = Array.from(prefectureDataMap).sort((pair1,pair2) => {
-        return pair2[1].change - pair1[1].change;
+        return pair1[1].change - pair2[1].change;
     });
     // console.log(prefectureDataMap);
-    const rankingStrings = rankingArray.map(([key,value]) => {
+    const rankingStrings = rankingArray.map(([key,value],i) => {
         return(
+            (i+1) +
+            '位 '+
             key +
             ': '+
             value.popu10 +
